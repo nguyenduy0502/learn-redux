@@ -1,9 +1,5 @@
-import {combineReducers}from 'redux';
-import TodoListReducer from './TodoListReducer';
-import WorkerReducer from './WorkerReducer';
-import DesignReducer from './DesignReducer';
+import { combineReducers } from 'redux'
+import reducerEmployee from './reducerEmployee';
 export default combineReducers({
-    TodoListReducer,
-    WorkerReducer,
-    DesignReducer,
+    reducerEmployee
 })

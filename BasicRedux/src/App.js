@@ -4,19 +4,18 @@ import {
     View
 } from 'react-native';
 import {Provider} from 'react-redux';
-import store from './store';
-import ListTodo from './components/ListTodo';
+import store from './configStore';
+import Hello from './components/Hello';
 export default class App extends Component {
     render() {
         return (
-           <Provider store={store}>
-               <View style={{flex:1}}>
-                   <ListTodo/>
+            <Provider store={store}>
+                <View style={{flex: 1}}>
+                    <Hello/>
 
-               </View>
-           </Provider>
-    )
-        ;
+                </View>
+            </Provider>
+        );
     }
 }
 

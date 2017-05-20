@@ -1,34 +1,72 @@
 import React, {Component} from 'react';
 import {
     Text,
-    View
+    View,
+    StyleSheet,
+    TouchableHighlight
 } from 'react-native';
 import {connect} from 'react-redux';
-import {getData} from '../actions';
+import {fetchData} from '../actions';
 class Hello extends Component {
-
-    componentWillMount(){
-        this.props.getData();
-    }
-
     render() {
         {console.log(this.props)}
         return (
-            <View style={{flex:1,marginTop:40}}>
 
-                    <Text>{this.props.data.name}</Text>
-                    <Text>{this.props.data.edu}</Text>
-
+            <View style={styles.container}>
+                <Text style={styles.text}>Fetch</Text>
+                <TouchableHighlight style={styles.button} onPress={() => this.props.fetchData()}>
+                    <Text style={styles.buttonText}>Load Data</Text>
+                </TouchableHighlight>
+                <View style={styles.mainContent}>
+                    {
+                        this.props.data.isFetching && <Text>Loading</Text>
+                    }
+                    {
+                        this.props.data.data.length ? (
+                                this.props.data.data.map((person, i) => {
+                                    return <View key={i}>
+                                        <Text>Name: {person.name}</Text>
+                                        <Text>Age: {person.age}</Text>
+                                    </View>
+                                })
+                            ) : null
+                    }
+                </View>
             </View>
+
         );
     }
 }
-const mapStateToProps=(state)=>{
-    return{
-        data:state.reducerEmployee
 
+
+const styles = StyleSheet.create({
+    container: {
+        marginTop: 100
+    },
+    text: {
+        textAlign: 'center'
+    },
+    button: {
+        height: 60,
+        margin: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#0b7eff'
+    },
+    buttonText: {
+        color: 'white'
+    },
+    mainContent: {
+        margin: 10,
+    }
+})
+
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+        data: state.fetchReducer
     }
 };
 
-export default connect(mapStateToProps,{getData})(Hello);
+export default connect(mapStateToProps,{fetchData} )(Hello);
 

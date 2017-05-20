@@ -6,4 +6,5 @@ import {
   View
 } from 'react-native';
 import App from './src/App';
-AppRegistry.registerComponent('BasicRedux', () => App);
+import Example from './src/Example';
+AppRegistry.registerComponent('BasicRedux', () => Example);

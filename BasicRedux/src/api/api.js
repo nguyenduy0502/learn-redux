@@ -1,7 +1,7 @@
 const Employee = [
-    { name: 'Nguyen', age: 36 },
-    { name: 'Dinh', age: 24 },
-    { name: 'Trang', age: 44 }
+    { name: 'Nguyen Duy', edu: "IT" },
+    { name: 'Dinh Hieu', edu: "Tester" },
+    { name: 'Huyen Trang', edu: "Designer" }
 ];
 export default () => {
     return new Promise((resolve, reject) => {

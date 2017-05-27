@@ -1,29 +1,33 @@
+import {FETCH_FAIL, FETCH_OK, FETCHING} from './types';
 import api from '../api/api';
-import {FETCH_FAIL,FETCH_OK,FETCHING}from './types';
+export function getData() {
 
-export function getData(){
-    return{
-        type:FETCHING
+    return {
+        type: FETCHING
     }
 }
 export function getDataSuccess(data) {
-    return{
-        type:FETCH_OK,
-        payload:data,
+    return {
+        type: FETCH_OK,
+        payload: data,
+
     }
 }
 export function getDataFail() {
-    return{
-        FETCH_FAIL
+    return {
+        type: FETCH_FAIL
     }
 }
 export function fetchData() {
-
-    return (dispatch)=>{
+    return (dispatch) => {
         dispatch(getData());
-        api().then((data)=>{
+        api().then((data) => {
             dispatch(getDataSuccess(data))
         })
-            .catch((error)=>console.log(error));
+            .catch(dispatch(getDataFail()))
+
     }
 }
+
+
+

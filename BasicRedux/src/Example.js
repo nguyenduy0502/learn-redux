@@ -4,7 +4,6 @@ import {
     View,
     TouchableOpacity,
     StyleSheet,
-    ListView,
 
 } from 'react-native';
 import api from './api/api';
@@ -12,34 +11,21 @@ export default class Example extends Component {
 
     constructor(props) {
         super(props);
-        const ds = new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 !== r2
-        });
         this.state={
-            dataSource : ds.cloneWithRows([]),
+            data:[],
+            isFetching:false
         };
     }
 
 
-    componentWillMount() {
-
-
-    }
     getData(){
         api().then((res) => {
-            console.log(res);
             this.setState({
-                dataSource:this.state.dataSource.cloneWithRows(res)
+                data:res,
+                isFetching:true
             })
         })
             .catch((err) => console.log(err));
-    }
-    renderRow(item){
-        return(
-            <View>
-                <Text>{item.name -  item.age}</Text>
-            </View>
-        );
     }
 
     render() {
@@ -48,11 +34,20 @@ export default class Example extends Component {
                 <TouchableOpacity style={styles.button} onPress={this.getData.bind(this)}>
                     <Text>Click Me</Text>
                 </TouchableOpacity>
-                <ListView
-                    dataSource={this.state.dataSource}
-                    renderRow={this.renderRow.bind(this)}
-                    enableEmptySections={true}
-                />
+                <View style={{flex:1}}>
+                    {
+                        this.state.isFetching===false && <Text>Loading ...</Text>
+                    }
+                    {
+                        this.state.data.length ? (
+                            this.state.data.map((employee,i)=>{
+                        return <View key={i}>
+                        <Text> Name :{employee.name} -  {employee.edu}</Text>
+                        </View>
+                    })
+                            ): null
+                    }
+                </View>
             </View>
 
         );

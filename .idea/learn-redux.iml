@@ -12,5 +12,6 @@
     <orderEntry type="library" name="react-native-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="react-native-fbsdk" level="application" />
     <orderEntry type="library" name="react-navigation-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="firebase-DefinitelyTyped" level="application" />
   </component>
 </module>

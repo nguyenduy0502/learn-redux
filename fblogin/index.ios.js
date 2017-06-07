@@ -4,4 +4,5 @@ import {
 
 } from 'react-native';
 import App from './src/App'
+/*import App from './App'*/
 AppRegistry.registerComponent('fblogin', () => App);

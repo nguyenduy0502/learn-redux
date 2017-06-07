@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image} from 'react-native';
-import {TabNavigator} from 'react-navigation';
+import {TabNavigator,TabView} from 'react-navigation';
 import TabContact from './TabContact';
 import TabChat from './TabChat';
 import TabGroup from './TabGroup';
@@ -18,6 +18,8 @@ const Home = TabNavigator({
         //activeBackgroundColor:'yellow'
 
     },
+ /*   tabBarComponent:TabView.TabBarBottom,
+    tabBarPosition:'bottom',*/
     navigationOptions:{
         drawerLabel: 'Home',
         drawerIcon: ({ tintColor }) => (

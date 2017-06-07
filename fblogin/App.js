@@ -60,10 +60,10 @@ export default class App extends Component {
             const token = tokenData.accessToken.toString();
             const credential =  firebase.auth.FacebookAuthProvider.credential(token);
             const user = await firebase.auth().signInWithCredential(credential);
-            firebase.database().ref(`/users/${user.uid}/profile`).set({
-                name:user.displayName,
+            firebase.database().ref(`/users/${user.uid}`).set({
+                displayName:user.displayName,
                 email:user.email,
-                avatar:user.photoURL
+                photoURL:user.photoURL
             });
             console.log(user);
 

@@ -26,7 +26,7 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        //console.log('ComponentDidMount', this.props);
+        console.log('ComponentDidMount', this.props);
     }
 
     state = {
